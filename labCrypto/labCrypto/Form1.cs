@@ -23,7 +23,7 @@ namespace labCrypto
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            String str = "testing tags in git";
 
             int rbLanguageIndex = getRadioButtonIndex(groupBox2);
             if (rbLanguageIndex == 1)//rus
