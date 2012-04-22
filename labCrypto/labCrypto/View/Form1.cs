@@ -34,7 +34,7 @@ namespace labCrypto
 
             try
             {
-                crypter = new CeasarCrypter(new Ceasar(alphabet));
+                crypter = new SimpleCrypter(new Ceasar(alphabet));
                 String text = tbInputText.Text;
                 String key = numericUpDown1.Value.ToString();
 

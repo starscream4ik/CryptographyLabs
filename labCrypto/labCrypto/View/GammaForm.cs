@@ -6,42 +6,23 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using cryptoAlg;
 using System.IO;
+using cryptoAlg;
 
 namespace labCrypto.View
 {
-    public partial class TritemiusForm : Form
+    public partial class GammaForm : Form
     {
-        Crypter crypter = new SimpleCrypter(new Tritemius(Alphabet.All));
-
-        public TritemiusForm()
+        Crypter crypter = new SimpleCrypter(new Gamma(Alphabet.All));
+        
+        public GammaForm()
         {
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            //Crypter crypter = new CeasarCrypter(new Tritemius(Alphabet.EnglishAll));
-            String key = "120";
-            int length = Alphabet.EnglishAll.IndexOf('w');
-            String crypted = crypter.getCrypt("wwwwww", key);
-            String decrypted = crypter.getDecrypt(crypted, key);
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            //if(groupBox2.
-            int keySelectorIndex = getRadioButtonIndex(groupBox1);
-            String key;
-            if (keySelectorIndex == 0)
-                key = numericUpDown1.Value.ToString() + ";" + numericUpDown2.Value.ToString();
-            else if (keySelectorIndex == 1)
-                key = numericUpDown3.Value.ToString() + ";" + numericUpDown4.Value.ToString() + ";" + numericUpDown5.Value.ToString();
-            else
-                key = textBox3.Text;
-
-            richTextBox2.Clear();
+            String key = numericUpDown1.Value.ToString();
             int lineCount = richTextBox1.Lines.Length;
             try
             {
@@ -51,8 +32,10 @@ namespace labCrypto.View
                 }
 
                 int radioButtonIndex = getRadioButtonIndex(groupBox2);
+                richTextBox2.Clear();
                 if (radioButtonIndex == 0) //crypt
                 {
+                    
                     foreach (String line in richTextBox1.Lines)
                     {
                         String cryptedLine = crypter.getCrypt(line, key);
@@ -72,10 +55,6 @@ namespace labCrypto.View
             {
                 MessageBox.Show(ex.Message);
             }
-
-
-
-
         }
 
         private int getRadioButtonIndex(GroupBox group)
@@ -127,6 +106,7 @@ namespace labCrypto.View
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
             }
+
         }
 
         private void saveTextToFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -162,6 +142,7 @@ namespace labCrypto.View
                     MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
                 }
             }
+
         }
     }
 }
