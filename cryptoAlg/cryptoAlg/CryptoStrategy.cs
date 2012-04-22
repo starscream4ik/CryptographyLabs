@@ -22,5 +22,19 @@ namespace cryptoAlg
         }
         public abstract String getCrypt(String inputMessage, String key);
         public abstract String getDecrypt(String inputMessage, String key);
+
+        public bool isNumber(String str)
+        {
+            bool result = true;
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (!Char.IsDigit(str[i]))
+                {
+                    result = false;
+                    break;
+                }
+            }
+            return result;
+        }
     }
 }

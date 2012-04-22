@@ -50,6 +50,7 @@
             this.btLab2.TabIndex = 1;
             this.btLab2.Text = "Lab 2";
             this.btLab2.UseVisualStyleBackColor = true;
+            this.btLab2.Click += new System.EventHandler(this.btLab2_Click);
             // 
             // MainForm
             // 

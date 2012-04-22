@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using labCrypto.View;
 
 namespace labCrypto
 {
@@ -19,6 +20,11 @@ namespace labCrypto
         private void btLab1_Click(object sender, EventArgs e)
         {
             new Form1().ShowDialog();
+        }
+
+        private void btLab2_Click(object sender, EventArgs e)
+        {
+            new TritemiusForm().ShowDialog();
         }
     }
 }

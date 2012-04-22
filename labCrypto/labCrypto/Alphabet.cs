@@ -83,12 +83,27 @@ namespace labCrypto
                 alphabet = "";
                 for (char ch = ' '; ch <= '/'; ch++)
                 {
-                    alphabet += ch.ToString();
+                    if(ch != ' ')
+                        alphabet += ch.ToString();
                 }
                 for (char ch = ':'; ch <= '?'; ch++)
                 {
                     alphabet += ch.ToString();
                 }
+                return alphabet;
+            }
+        }
+
+        public static string Numbers
+        {
+            get
+            {
+                alphabet = "";
+                for (char ch = '0'; ch <= '9'; ch++)
+                {
+                    alphabet += ch.ToString();
+                }
+
                 return alphabet;
             }
         }
@@ -115,6 +130,41 @@ namespace labCrypto
                 alphabet += SpecialCharacters;
                 return alphabet;
             }
+        }
+
+        public static String All
+        {
+            get
+            {
+                alphabet = String.Empty;
+                alphabet += RusL;
+                alphabet += RusU;
+                //alphabet += SpecialCharacters;
+                alphabet += EnglishAll;
+                alphabet += Numbers;
+                return alphabet;
+            }
+        }
+
+        public static bool symbolsExistsInAlphabet(String line)
+        {
+            bool result = true;
+            for (int i = 0; i < line.Length; i++)
+            {
+                if (line[i] == ' ')
+                {
+                    continue;
+                }
+                else
+                {
+                    if (cryptoAlg.CryptoStrategy.alphabet.IndexOf(line[i]) < 0)
+                    {
+                        throw new Exception("Not appropriate symbol was found! " + line[i]);
+                    }
+                }
+            }
+
+            return result;
         }
 
  
