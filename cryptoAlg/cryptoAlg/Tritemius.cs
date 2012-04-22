@@ -17,6 +17,7 @@ namespace cryptoAlg
             StringBuilder resultBuilder = new StringBuilder();
             String[] numbers = inputMessage.Split(';');
             int A, B, C;
+            #region A, B
             if (numbers.Length == 2)
             {
                 if (isNumber(numbers[0]) && isNumber(numbers[1]))
@@ -44,6 +45,8 @@ namespace cryptoAlg
                     }
                 }
             }
+            #endregion
+            #region A, B, C
             if (numbers.Length == 3)
             {
                 if (isNumber(numbers[0]) && isNumber(numbers[1]) && isNumber(numbers[2]))
@@ -51,30 +54,31 @@ namespace cryptoAlg
                     A = Convert.ToInt32(numbers[0]);
                     B = Convert.ToInt32(numbers[1]);
                     C = Convert.ToInt32(numbers[2]);
-                }
 
-            }
-            if (isNumber(key))
-            {
-                int numberKey = Convert.ToInt32(key);
-                String currentSymbol = String.Empty;
-                for (int i = 0; i < inputMessage.Length; i++)
-                {
-                    if (inputMessage[i] == ' ')
+                    int numberKey = 0;
+                    String currentSymbol = String.Empty;
+                    for (int i = 0; i < inputMessage.Length; i++)
                     {
-                        resultBuilder.Append(' ');
-                        continue;
-                    }
-                    else
-                    {
-                        int currentIndexOfSymbol = CryptoStrategy.alphabet.IndexOf(inputMessage[i]);
-                        int newIndex = (currentIndexOfSymbol + numberKey) % CryptoStrategy.amountOfSymbolsInAlphabet;
-                        char newSymbol = CryptoStrategy.alphabet[newIndex];
-                        resultBuilder.Append(newSymbol);
+                        if (inputMessage[i] == ' ')
+                        {
+                            resultBuilder.Append(' ');
+                            continue;
+                        }
+                        else
+                        {
+                            numberKey = notLinear(A, B, C, i);
+                            int currentIndexOfSymbol = CryptoStrategy.alphabet.IndexOf(inputMessage[i]);
+                            int newIndex = (currentIndexOfSymbol + numberKey) % CryptoStrategy.amountOfSymbolsInAlphabet;
+                            char newSymbol = CryptoStrategy.alphabet[newIndex];
+                            resultBuilder.Append(newSymbol);
+                        }
                     }
                 }
 
             }
+            #endregion
+
+            #region key is a String
             else
             {
                 StringBuilder wordKey = new StringBuilder();
@@ -109,53 +113,103 @@ namespace cryptoAlg
                 }
 
             }
+            #endregion
             result = resultBuilder.ToString();
             return result;
             //throw new NotImplementedException();
         }
-
-        private void crypt(String msg, int key)
-        { }
 
         private int linearKey(int A, int B, int index)
         {
             return A * index + B;
         }
 
+        private int notLinear(int A, int B, int C, int index)
+        {
+            return A * (int)Math.Pow(index, 2) + B * index + C;
+        }
+
         public override String getDecrypt(string inputMessage, string key)
         {
             String result = String.Empty;
             StringBuilder resultBuilder = new StringBuilder();
-            if (isNumber(key))
+            String[] numbers = inputMessage.Split(';');
+            int A, B, C;
+            if (numbers.Length == 2)
             {
-                int numberKey = Convert.ToInt32(key);
-                String currentSymbol = String.Empty;
-                for (int i = 0; i < inputMessage.Length; i++)
+                if (isNumber(numbers[0]) && isNumber(numbers[1]))
                 {
-                    if (inputMessage[i] == ' ')
-                    {
-                        resultBuilder.Append(' ');
-                        continue;
-                    }
-                    else
-                    {
-                        int currentIndexOfSymbol = CryptoStrategy.alphabet.IndexOf(inputMessage[i]);
-                        int newIndex;
+                    A = Convert.ToInt32(numbers[0]);
+                    B = Convert.ToInt32(numbers[1]);
 
-                        if (numberKey > CryptoStrategy.amountOfSymbolsInAlphabet)
+                    int numberKey = 0;
+                    String currentSymbol = String.Empty;
+                    for (int i = 0; i < inputMessage.Length; i++)
+                    {
+                        if (inputMessage[i] == ' ')
                         {
-                            newIndex = (CryptoStrategy.amountOfSymbolsInAlphabet - numberKey + currentIndexOfSymbol) % CryptoStrategy.amountOfSymbolsInAlphabet;
+                            resultBuilder.Append(' ');
+                            continue;
                         }
                         else
                         {
-                            newIndex = (currentIndexOfSymbol - numberKey) % CryptoStrategy.amountOfSymbolsInAlphabet;
+                            numberKey = linearKey(A, B, i);
+                            int currentIndexOfSymbol = CryptoStrategy.alphabet.IndexOf(inputMessage[i]);
+                            int newIndex;
+
+                            if (numberKey > CryptoStrategy.amountOfSymbolsInAlphabet)
+                            {
+                                newIndex = (CryptoStrategy.amountOfSymbolsInAlphabet - numberKey + currentIndexOfSymbol) % CryptoStrategy.amountOfSymbolsInAlphabet;
+                            }
+                            else
+                            {
+                                newIndex = (currentIndexOfSymbol - numberKey) % CryptoStrategy.amountOfSymbolsInAlphabet;
+                            }
+                            char newSymbol = CryptoStrategy.alphabet[newIndex];
+                            resultBuilder.Append(newSymbol);
                         }
-                        char newSymbol = CryptoStrategy.alphabet[newIndex];
-                        resultBuilder.Append(newSymbol);
+                    }
+                }
+            }
+            if (numbers.Length == 3)
+            {
+                if (isNumber(numbers[0]) && isNumber(numbers[1]) && isNumber(numbers[2]))
+                {
+                    A = Convert.ToInt32(numbers[0]);
+                    B = Convert.ToInt32(numbers[1]);
+                    C = Convert.ToInt32(numbers[2]);
+
+                    int numberKey = 0;
+                    String currentSymbol = String.Empty;
+                    for (int i = 0; i < inputMessage.Length; i++)
+                    {
+                        if (inputMessage[i] == ' ')
+                        {
+                            resultBuilder.Append(' ');
+                            continue;
+                        }
+                        else
+                        {
+                            numberKey = notLinear(A, B, C,i);
+                            int currentIndexOfSymbol = CryptoStrategy.alphabet.IndexOf(inputMessage[i]);
+                            int newIndex;
+
+                            if (numberKey > CryptoStrategy.amountOfSymbolsInAlphabet)
+                            {
+                                newIndex = (CryptoStrategy.amountOfSymbolsInAlphabet - numberKey + currentIndexOfSymbol) % CryptoStrategy.amountOfSymbolsInAlphabet;
+                            }
+                            else
+                            {
+                                newIndex = (currentIndexOfSymbol - numberKey) % CryptoStrategy.amountOfSymbolsInAlphabet;
+                            }
+                            char newSymbol = CryptoStrategy.alphabet[newIndex];
+                            resultBuilder.Append(newSymbol);
+                        }
                     }
                 }
 
             }
+
             else
             {
                 //String wordKey = string.Empty;
@@ -203,7 +257,7 @@ namespace cryptoAlg
             }
             result = resultBuilder.ToString();
             return result;
-            //throw new NotImplementedException();
+
         }
 
     }

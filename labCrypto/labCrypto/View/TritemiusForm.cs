@@ -47,7 +47,7 @@ namespace labCrypto.View
             {
                 foreach (String line in richTextBox1.Lines)
                 {
-                    String cryptedLine = crypter.getCrypt(line, "someWord");
+                    String cryptedLine = crypter.getCrypt(line, key);
                     richTextBox2.AppendText(cryptedLine + "\n");
                 }
             }
@@ -55,8 +55,8 @@ namespace labCrypto.View
             {
                 foreach (String line in richTextBox1.Lines)
                 {
-                    String cryptedLine = crypter.getDecrypt(line, "someWord");
-                    richTextBox2.AppendText(cryptedLine);
+                    String cryptedLine = crypter.getDecrypt(line, key);
+                    richTextBox2.AppendText(cryptedLine + "\n");
                 }
             }
             int lineCount = richTextBox1.Lines.Length;
@@ -111,6 +111,42 @@ namespace labCrypto.View
                                 if (Alphabet.symbolsExistsInAlphabet(line))
                                     richTextBox1.AppendText(line + "\n");
                             }
+                            sr.Close();
+                            //tbInputText.Text = line;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+            }
+        }
+
+        private void saveTextToFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Stream myStream = null;
+            saveFileDialog1.InitialDirectory = "d:\\";
+            saveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog1.FilterIndex = 2;
+            saveFileDialog1.RestoreDirectory = true;
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if ((myStream = saveFileDialog1.OpenFile()) != null)
+                    {
+                        using (myStream)
+                        {
+                            StreamWriter sw = new StreamWriter(myStream);
+                            foreach (String line in richTextBox2.Lines)
+                            {
+                                sw.WriteLine(line);
+                            }
+
+                            sw.Flush();
+                            sw.Close();
                             //tbInputText.Text = line;
                         }
                     }

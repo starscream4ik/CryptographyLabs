@@ -38,7 +38,7 @@
             this.btLab1.Name = "btLab1";
             this.btLab1.Size = new System.Drawing.Size(112, 31);
             this.btLab1.TabIndex = 0;
-            this.btLab1.Text = "button1";
+            this.btLab1.Text = "lab1";
             this.btLab1.UseVisualStyleBackColor = true;
             this.btLab1.Click += new System.EventHandler(this.btLab1_Click);
             // 
