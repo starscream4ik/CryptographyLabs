@@ -5,9 +5,22 @@ using System.Text;
 
 namespace cryptoAlg
 {
-    public interface CryptoStrategy
+    public abstract class CryptoStrategy
     {
-        String  getCrypt(String inputMessage, String key);
-        String  getDecrypt(String inputMessage, String key);
+        public static String alphabet;
+        public static int amountOfSymbolsInAlphabet;
+
+        public CryptoStrategy(String alphabet)
+        {
+            CryptoStrategy.alphabet = alphabet;
+            CryptoStrategy.amountOfSymbolsInAlphabet = alphabet.Length;
+        }
+
+        public CryptoStrategy():this(String.Empty)
+        {
+            
+        }
+        public abstract String getCrypt(String inputMessage, String key);
+        public abstract String getDecrypt(String inputMessage, String key);
     }
 }

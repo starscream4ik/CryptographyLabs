@@ -7,17 +7,14 @@ namespace cryptoAlg
 {
     public class Ceasar : CryptoStrategy
     {
-        private String alphabet;
-        private int amountOfSymbolsInAlphabet;
-
-
-        public Ceasar(String alphabet)
+        public Ceasar(String alphabet):base(alphabet)
         {
-            this.alphabet = alphabet;
-            amountOfSymbolsInAlphabet = this.alphabet.Length;
+            //this.alphabet = alphabet;
+            //CryptoStrategy.alphabet = alphabet;
+            //amountOfSymbolsInAlphabet = CryptoStrategy.alphabet.Length;
         }
 
-        public String getCrypt(String inputMessage, String key)
+        public override String getCrypt(String inputMessage, String key)
         {
             String cipher = String.Empty;
             int shiftKey = Int32.Parse(key);
@@ -35,7 +32,7 @@ namespace cryptoAlg
 
 
                 int indexOfSymbolInAlphabet = alphabet.IndexOf(currentCharacterOfInputString);
-                int cryptedSymbolPosition = (indexOfSymbolInAlphabet + shiftKey) % this.amountOfSymbolsInAlphabet;
+                int cryptedSymbolPosition = (indexOfSymbolInAlphabet + shiftKey) % CryptoStrategy.amountOfSymbolsInAlphabet;
                 cipher += alphabet[cryptedSymbolPosition].ToString();
 
             }
@@ -43,7 +40,7 @@ namespace cryptoAlg
             return cipher;
         }
 
-        public String getDecrypt(String inputMessage, String key)
+        public override String getDecrypt(String inputMessage, String key)
         {
             String cipher = String.Empty;
             int shiftKey = Int32.Parse(key);
@@ -63,7 +60,7 @@ namespace cryptoAlg
 
                 if (indexOfSymbolInAlphabet - shiftKey < 0)
                 {
-                    decryptSymbolPosition = (this.amountOfSymbolsInAlphabet - shiftKey + indexOfSymbolInAlphabet) % this.amountOfSymbolsInAlphabet;
+                    decryptSymbolPosition = (CryptoStrategy.amountOfSymbolsInAlphabet - shiftKey + indexOfSymbolInAlphabet) % CryptoStrategy.amountOfSymbolsInAlphabet;
                     cipher += alphabet[decryptSymbolPosition].ToString();
                 }
                 else
