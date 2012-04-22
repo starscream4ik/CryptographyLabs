@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Ceasar.cs" />
     <Compile Include="CryptoStrategy.cs" />
+    <Compile Include="Gamma.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tritemius.cs" />
   </ItemGroup>

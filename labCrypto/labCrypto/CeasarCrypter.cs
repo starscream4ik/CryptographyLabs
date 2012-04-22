@@ -6,9 +6,9 @@ using cryptoAlg;
 
 namespace labCrypto
 {
-    public class CeasarCrypter : Crypter
+    public class SimpleCrypter : Crypter
     {
-        public CeasarCrypter(CryptoStrategy strategy)
+        public SimpleCrypter(CryptoStrategy strategy)
         {
             setStrategy(strategy);
         }
