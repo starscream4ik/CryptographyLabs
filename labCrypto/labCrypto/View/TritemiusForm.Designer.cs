@@ -31,9 +31,9 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,8 +48,8 @@
             this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveTextToFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
@@ -96,17 +96,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Key format";
             // 
-            // radioButton1
+            // radioButton3
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(54, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Linear";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(6, 65);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(48, 17);
+            this.radioButton3.TabIndex = 2;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "word";
+            this.radioButton3.UseVisualStyleBackColor = true;
             // 
             // radioButton2
             // 
@@ -119,16 +118,17 @@
             this.radioButton2.Text = "not linear";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // radioButton1
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(6, 65);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(48, 17);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "word";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(6, 19);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(54, 17);
+            this.radioButton1.TabIndex = 0;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Linear";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -232,14 +232,14 @@
             // openFileToolStripMenuItem
             // 
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.openFileToolStripMenuItem.Text = "Open file";
             this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
             // 
             // saveTextToFileToolStripMenuItem
             // 
             this.saveTextToFileToolStripMenuItem.Name = "saveTextToFileToolStripMenuItem";
-            this.saveTextToFileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveTextToFileToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.saveTextToFileToolStripMenuItem.Text = "Save text to file";
             this.saveTextToFileToolStripMenuItem.Click += new System.EventHandler(this.saveTextToFileToolStripMenuItem_Click);
             // 
@@ -254,6 +254,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Operations";
             // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(7, 51);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(62, 17);
+            this.radioButton5.TabIndex = 1;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.Text = "Decrypt";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            // 
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
@@ -266,17 +277,6 @@
             this.radioButton4.Text = "Crypt";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(7, 51);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(62, 17);
-            this.radioButton5.TabIndex = 1;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Decrypt";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(302, 302);
@@ -287,8 +287,13 @@
             // numericUpDown2
             // 
             this.numericUpDown2.Location = new System.Drawing.Point(378, 304);
+            this.numericUpDown2.Maximum = new decimal(new int[] {
+            900,
+            0,
+            0,
+            0});
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(37, 20);
+            this.numericUpDown2.Size = new System.Drawing.Size(54, 20);
             this.numericUpDown2.TabIndex = 17;
             // 
             // numericUpDown3
@@ -308,6 +313,11 @@
             // numericUpDown5
             // 
             this.numericUpDown5.Location = new System.Drawing.Point(448, 327);
+            this.numericUpDown5.Maximum = new decimal(new int[] {
+            900,
+            0,
+            0,
+            0});
             this.numericUpDown5.Name = "numericUpDown5";
             this.numericUpDown5.Size = new System.Drawing.Size(37, 20);
             this.numericUpDown5.TabIndex = 20;

@@ -22,7 +22,6 @@ namespace cryptoAlg
 
             for (int i = 0; i < inputMessage.Length; i++)
             {
-                //int currentIndex = inputMessage[i];
                 if (inputMessage[i] == ' ')
                 {
                     resultBuilder.Append(' ');
