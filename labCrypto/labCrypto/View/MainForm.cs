@@ -31,5 +31,11 @@ namespace labCrypto
         {
             new GammaForm().ShowDialog();
         }
+
+        private void btLab4_Click(object sender, EventArgs e)
+        {
+            DESform desForm = new DESform();
+            desForm.ShowDialog();
+        }
     }
 }
