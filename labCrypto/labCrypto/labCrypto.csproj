@@ -52,6 +52,12 @@
     <Compile Include="Alphabet.cs" />
     <Compile Include="CeasarCrypter.cs" />
     <Compile Include="Crypter.cs" />
+    <Compile Include="View\DESform.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DESform.Designer.cs">
+      <DependentUpon>DESform.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
     <Compile Include="View\TritemiusForm.Designer.cs">
       <DependentUpon>TritemiusForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\DESform.resx">
+      <DependentUpon>DESform.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
