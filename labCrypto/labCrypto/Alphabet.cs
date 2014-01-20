@@ -17,6 +17,7 @@ namespace labCrypto
             get
             {
 				//another one test
+				//newBranch commit
                 alphabet = "not valid, for git testing only";
                 for (char ch = 'A'; ch <= 'Z'; ch++)
                 {
