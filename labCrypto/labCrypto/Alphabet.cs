@@ -16,6 +16,7 @@ namespace labCrypto
         {
             get
             {
+				//another one test
                 alphabet = "not valid, for git testing only";
                 for (char ch = 'A'; ch <= 'Z'; ch++)
                 {
