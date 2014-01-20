@@ -16,6 +16,7 @@ namespace labCrypto
         {
             get
             {
+					// another change. git features testing purpose only
                 alphabet = "";
                 for (char ch = 'A'; ch <= 'Z'; ch++)
                 {
