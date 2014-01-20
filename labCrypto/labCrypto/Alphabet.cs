@@ -16,7 +16,7 @@ namespace labCrypto
         {
             get
             {
-                alphabet = "";
+                alphabet = "not valid, for git testing only";
                 for (char ch = 'A'; ch <= 'Z'; ch++)
                 {
                     alphabet += ch.ToString();
