@@ -17,6 +17,7 @@ namespace labCrypto
             get
             {
 					// another change. git features testing purpose only
+					// commit master
                 alphabet = "";
                 for (char ch = 'A'; ch <= 'Z'; ch++)
                 {
